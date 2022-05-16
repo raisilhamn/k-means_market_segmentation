@@ -7,7 +7,7 @@ kelas SIC201 - Pembelajaran Mesin - S1 - SISTEM INFORMASI
 
 Jalankan Kode ini menggunakan Rstudio
 
-Link Presentasi : https://www.canva.com/design/DAFA2wdTSZk/p_87spxTACNwvGJEJbwuFg/view#10
+Link Presentasi : https://www.canva.com/design/DAFA2wdTSZk/p_87spxTACNwvGJEJbwuFg/view#1
 
 ## Reference
 
