@@ -16,7 +16,7 @@ library(factoextra)
 ```
 
 ```{r}
-df <- read.csv(file = 'black_friday.csv')
+df <- read.csv(file = 'black_friday_2.csv')
 glimpse(df)
 out<-data.matrix(df)
 df_final <- as.data.frame(out)
@@ -29,7 +29,7 @@ aggr(df_final)
 
 ```{r}
 # Data After normalization
-df_clean <- scale(df_final)
+df_clean <- df_final
 sum(is.na(df_clean))
 df_clean<- (df_clean)
 colSums(is.na(df_clean))
@@ -40,8 +40,8 @@ aggr(df_clean)
 
 
 ```{r}
-res.dist <- get_dist(df, method = "pearson")
-fviz_dist(res.dist, lab_size = 8)
+fviz_nbclust(df_clean, kmeans, method = "wss")
+fviz_nbclust(df, kmeans, method = "silhouette")
 ```
 
 
