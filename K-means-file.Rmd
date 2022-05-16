@@ -16,7 +16,7 @@ library(factoextra)
 ```
 
 ```{r}
-df <- read.csv(file = 'black_friday_2.csv')
+df <- read.csv(file = 'black_friday2.csv')
 glimpse(df)
 out<-data.matrix(df)
 df_final <- as.data.frame(out)
@@ -29,7 +29,8 @@ aggr(df_final)
 
 ```{r}
 # Data After normalization
-df_clean <- df_final
+
+df_clean <- scale(df_final)
 sum(is.na(df_clean))
 df_clean<- (df_clean)
 colSums(is.na(df_clean))
@@ -41,12 +42,23 @@ aggr(df_clean)
 
 ```{r}
 fviz_nbclust(df_clean, kmeans, method = "wss")
-fviz_nbclust(df, kmeans, method = "silhouette")
+fviz_nbclust(df_clean, kmeans, method = "gap_stat")
 ```
 
 
 
 
+```{r}
+final <- kmeans(df_clean, 10,nstart = 5)
+print(final)
+
+```
+
+
+```{r}
+fviz_cluster(final, data = df_clean)
+
+```
 
 
 
