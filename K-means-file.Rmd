@@ -12,11 +12,13 @@ library(stringr)
 library(dplyr)
 library(tidyr)
 library(factoextra)
+library(cluster)
+library(HSAUR)
 
 ```
 
 ```{r}
-df <- read.csv(file = 'black_friday2.csv')
+df <- read.csv(file = 'black_friday.csv')
 glimpse(df)
 out<-data.matrix(df)
 df_final <- as.data.frame(out)
@@ -49,7 +51,7 @@ fviz_nbclust(df_clean, kmeans, method = "gap_stat")
 
 
 ```{r}
-final <- kmeans(df_clean, 10,nstart = 5)
+final <- kmeans(df_clean, 4)
 print(final)
 
 ```
@@ -59,11 +61,3 @@ print(final)
 fviz_cluster(final, data = df_clean)
 
 ```
-
-
-
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
-
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
-
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
