@@ -8,15 +8,47 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 ```{r}
 library(VIM)
+library(stringr)
+library(dplyr)
+library(tidyr)
+library(factoextra)
+
+```
+
+```{r}
+df <- read.csv(file = 'black_friday.csv')
+glimpse(df)
+out<-data.matrix(df)
+df_final <- as.data.frame(out)
 ```
 
 ```{r}
 #  Data before normalization. 
-df <- read.csv(file = 'black_friday.csv')
-aggr(df)
+aggr(df_final)
 ```
 
-Data After normalization
+```{r}
+# Data After normalization
+df_clean <- scale(df_final)
+sum(is.na(df_clean))
+df_clean<- (df_clean)
+colSums(is.na(df_clean))
+df_clean <- na.omit(df_clean)
+aggr(df_clean)
+```
+
+
+
+```{r}
+res.dist <- get_dist(df, method = "pearson")
+fviz_dist(res.dist, lab_size = 8)
+```
+
+
+
+
+
+
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
